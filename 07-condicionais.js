@@ -1,7 +1,7 @@
 console.log(`Trabalhando com Listas`);
 // const salvador = `Salvador`;
 // const saoPaulo = `Sao paulo`;
-// const rioDeJaneiro = `Rio da janeiro`;
+// const rioDeJaneiro = `rio da janeiro`;
 
 const listaDeDestinos = new Array(
     `Salvador`,
