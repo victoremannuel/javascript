@@ -11,4 +11,3 @@ primeiroNome = primeiroNome + sobrenome;
 const nomeCompleto = primeiroNome + sobrenome;
 console.log(primeiroNome);
 console.log(nomeCompleto);
-
