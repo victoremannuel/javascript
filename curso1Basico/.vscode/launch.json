@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/curso1/08-loops.js"
+            "program": "${workspaceFolder}/curso1Basico/08-loops.js"
         },
         {
             "type": "node",
@@ -20,7 +20,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/curso1/07-condicionais.js"
+            "program": "${workspaceFolder}/curso1Basico/07-condicionais.js"
         }
     ]
 }
