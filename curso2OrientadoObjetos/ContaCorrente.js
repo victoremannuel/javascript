@@ -4,6 +4,7 @@ export class ContaCorrente {
     //# também representa que é privado como no Java
     #saldo;
     #agencia;
+    cliente;
 
     sacar(valor) {
         if (this.#saldo >= valor) {
@@ -19,5 +20,10 @@ export class ContaCorrente {
             console.log("erro: valor negativo");
         }
         this.#saldo += valor;
+    }
+
+    transferir (valor, conta){
+        const valorSacado = this.sacar(valor);
+        conta.depositar(valorSacado);
     }
 };
