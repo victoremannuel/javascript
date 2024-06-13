@@ -1,10 +1,12 @@
+import { Cliente } from "./Cliente.js";
+
 export class ContaCorrente {
     //convenção o _ representar um atributo privado
     // _saldo;
     //# também representa que é privado como no Java
     #saldo;
     #agencia;
-    cliente;
+    _cliente;
 
     sacar(valor) {
         if (this.#saldo >= valor) {
@@ -25,5 +27,19 @@ export class ContaCorrente {
     transferir (valor, conta) {
         const valorSacado = this.sacar(valor);
         conta.depositar(valorSacado);
+    }
+
+    set cliente(novoValor){
+        if (novoValor instanceof Cliente) {
+            this._cliente = novoValor;
+        }
+    }
+
+    get cliente(){
+        return this._cliente;
+    }
+
+    get saldo(){
+        return this.#saldo;
     }
 };
