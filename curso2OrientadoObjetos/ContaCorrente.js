@@ -5,8 +5,13 @@ export class ContaCorrente {
     // _saldo;
     //# também representa que é privado como no Java
     #saldo;
-    #agencia;
+    _agencia;
     _cliente;
+
+    constructor (agencia, cliente) {
+        this.agencia = agencia;
+        this.cliente = cliente;
+    }
 
     sacar(valor) {
         if (this.#saldo >= valor) {
