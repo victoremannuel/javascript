@@ -4,6 +4,7 @@ export class ContaCorrente {
     //convenção o _ representar um atributo privado
     // _saldo;
     //# também representa que é privado como no Java
+    static numeroDeContas = 0;
     #saldo;
     _agencia;
     _cliente;
@@ -11,6 +12,7 @@ export class ContaCorrente {
     constructor (agencia, cliente) {
         this.agencia = agencia;
         this.cliente = cliente;
+        ContaCorrente.numeroDeContas += 1;
     }
 
     sacar(valor) {
