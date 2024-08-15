@@ -7,7 +7,8 @@ export class Negociacoes {
         this.negociacoes.push(negociacao);
     };
 
-    lista () : ReadonlyArray<Negociacao> { /* tipo de array que só permite ler quando chamado por uma instancia fora da classe */
+    lista () : readonly Negociacao[] { //mesma coisa que escrever ReadonlyArray<Negociacao>
+        /* tipo de array que só permite ler quando chamado por uma instancia fora da classe */
         return this.negociacoes;
     };
 };

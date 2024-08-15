@@ -7,6 +7,7 @@ export class Negociacoes {
     }
     ;
     lista() {
+        /* tipo de array que só permite ler quando chamado por uma instancia fora da classe */
         return this.negociacoes;
     }
     ;
