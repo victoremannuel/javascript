@@ -1,4 +1,4 @@
-export class View<T> {
+export class View<T> { //tipo genérico que é definido pela classe filha quando extende a mãe
 
     protected elemento : HTMLElement; //para que as outras classes(filhas) que estão importando View possam acessar o elemento
 
