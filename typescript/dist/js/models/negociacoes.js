@@ -9,5 +9,6 @@ export class Negociacoes {
     lista() {
         return this.negociacoes;
     }
+    ;
 }
 ;
