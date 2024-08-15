@@ -10,13 +10,18 @@ export class Negociacao {
     // }
 
     constructor (
-        private readonly data : Date, //readonly está substituindo o get, ou seja, só pode ler
-        private readonly quantidade : number,
-        private readonly valor : number
+        private _data : Date, //readonly está substituindo o get, ou seja, só pode ler
+        public readonly quantidade : number,
+        public readonly valor : number
     ) {}
 
     get volume () : number {
         return this.quantidade * this.valor;
+    }
+
+    get data () : Date {
+        const data = new Date(this._data.getTime()); //proteger o código para não conseguir setar a data pelo método setDate
+        return data;
     }
 
     // get data () : Date {
