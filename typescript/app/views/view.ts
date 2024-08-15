@@ -1,4 +1,5 @@
-export class View<T> { //tipo genérico que é definido pela classe filha quando extende a mãe
+export abstract class View<T> { //tipo genérico que é definido pela classe filha quando extende a mãe
+//classe abstrata impede sua instancia direta, ou seja, fora do construtor
 
     protected elemento : HTMLElement; //para que as outras classes(filhas) que estão importando View possam acessar o elemento
 
@@ -11,7 +12,5 @@ export class View<T> { //tipo genérico que é definido pela classe filha quando
         this.elemento.innerHTML = template;
     };
 
-    template (model : T) : string {
-        throw Error('Classe filha precisa implementar o método template')
-    };
+    abstract template (model : T) : string; //abstrato para obrigar as classes filhas a implementar template
 };

@@ -8,9 +8,5 @@ export class View {
         this.elemento.innerHTML = template;
     }
     ;
-    template(model) {
-        throw Error('Classe filha precisa implementar o método template');
-    }
-    ;
 }
 ;
