@@ -24,6 +24,14 @@ export class Negociacao {
         return data;
     }
 
+    public static criaDe (dataString : string, quantidadeString : string, valorString : string) : Negociacao{
+        const exp = /-/g; //substitui tudo que está sendo procurado pelo conteudo entre barras
+        const date = new Date(dataString.replace(exp, ',')); // procura todas as virculas e substitui usando o exp
+        const quantidade = parseInt(quantidadeString); //converte para inteiro
+        const valor = parseFloat(valorString); //converte para float
+        return new Negociacao(date, quantidade, valor);
+    }
+
     // get data () : Date {
     //     return this._data;
     // }

@@ -2,13 +2,25 @@ export abstract class View<T> { //tipo genérico que é definido pela classe fil
 //classe abstrata impede sua instancia direta, ou seja, fora do construtor
 
     protected elemento : HTMLElement; //para que as outras classes(filhas) que estão importando View possam acessar o elemento
+    private escapar : boolean = false;
 
-    constructor (seletor : string) {
-        this.elemento = document.querySelector(seletor);
+    constructor (seletor : string, escapar ?: boolean) {
+        const elemento = document.querySelector(seletor)
+        if (elemento) {
+            this.elemento = elemento as HTMLElement;
+        }else{
+            throw Error ('seletor não existe no DOM, verifique.')
+        }
+        if (escapar) {
+            this.escapar = escapar;
+        };
     };
 
     public update (model : T) : void {
-        const template = this.template(model);
+        let template = this.template(model);
+        if (this.escapar) {
+            template = template.replace(/<script>[\s\S]*?<\/script>/,'');
+        };
         this.elemento.innerHTML = template;
     };
 
