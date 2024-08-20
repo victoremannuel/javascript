@@ -1,3 +1,5 @@
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-execucao.js";
+
 export abstract class View<T> { //tipo genérico que é definido pela classe filha quando extende a mãe
 //classe abstrata impede sua instancia direta, ou seja, fora do construtor
 
@@ -16,6 +18,7 @@ export abstract class View<T> { //tipo genérico que é definido pela classe fil
         };
     };
 
+    @logarTempoDeExecucao()
     public update (model : T) : void {
         let template = this.template(model);
         if (this.escapar) {
