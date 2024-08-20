@@ -1,7 +1,7 @@
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagemView.js";
-import { NegociacoesView } from "../views/negociacoes-view.js";
+import { NegociacoesView } from "../views/negociacoesView.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
@@ -16,9 +16,8 @@ export class NegociacaoController {
     adiciona() {
         const negociacao = this.criaNegociacao();
         this.negociacoes.adiciona(negociacao);
-        this.negociacoesView.update(this.negociacoes);
-        this.mensagemView.update('Negociacao adicionada com sucesso!');
         this.limparFormulario();
+        this.atualizaView();
     }
     ;
     criaNegociacao() {
@@ -36,5 +35,9 @@ export class NegociacaoController {
         this.inputData.focus();
     }
     ;
+    atualizaView() {
+        this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update('Negociacao adicionada com sucesso!');
+    }
 }
 ;

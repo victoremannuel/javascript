@@ -1,7 +1,7 @@
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagemView.js";
-import { NegociacoesView } from "../views/negociacoes-view.js";
+import { NegociacoesView } from "../views/negociacoesView.js";
 
 export class NegociacaoController {
 
@@ -19,26 +19,30 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     };
 
-    adiciona () : void {
+    public adiciona () : void {
         const negociacao = this.criaNegociacao();
         this.negociacoes.adiciona(negociacao);
-        this.negociacoesView.update(this.negociacoes);
-        this.mensagemView.update('Negociacao adicionada com sucesso!');
         this.limparFormulario();
+        this.atualizaView();
     };
     
-    criaNegociacao () : Negociacao /*tipando o método*/ {
+    private criaNegociacao () : Negociacao /*tipando o método*/ {
         const exp = /-/g; //substitui tudo que está sendo procurado pelo conteudo entre barras
         const date = new Date(this.inputData.value.replace(exp, ',')); // procura todas as virculas e substitui usando o exp
         const quantidade = parseInt(this.inputQuantidade.value); //converte para inteiro
         const valor = parseFloat(this.inputValor.value); //converte para float
         return new Negociacao(date, quantidade, valor);
     };
-
-    limparFormulario () : void {
+    
+    private limparFormulario () : void {
         this.inputData.value = '';
         this.inputQuantidade.value = '';
         this.inputValor.value = '';
         this.inputData.focus();
     };
+    
+    private atualizaView () : void {
+        this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update('Negociacao adicionada com sucesso!');
+    }
 };

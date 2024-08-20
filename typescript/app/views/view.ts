@@ -7,10 +7,10 @@ export abstract class View<T> { //tipo genérico que é definido pela classe fil
         this.elemento = document.querySelector(seletor);
     };
 
-    update (model : T) : void {
+    public update (model : T) : void {
         const template = this.template(model);
         this.elemento.innerHTML = template;
     };
 
-    abstract template (model : T) : string; //abstrato para obrigar as classes filhas a implementar template
+    protected abstract template (model : T) : string; //abstrato para obrigar as classes filhas a implementar template
 };
