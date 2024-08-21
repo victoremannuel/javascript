@@ -1,7 +1,6 @@
 /* Código simplório, apenas para fornecer o serviço para a aplicação */
 var api = {}
 
-
 api.dados = function(req, res) {
 
     res.json([
@@ -12,6 +11,5 @@ api.dados = function(req, res) {
     ]);
     
 };
-
 
 module.exports = api;
