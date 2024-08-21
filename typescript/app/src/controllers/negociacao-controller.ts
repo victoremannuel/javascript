@@ -6,6 +6,7 @@ import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagemView.js";
 import { NegociacoesView } from "../views/negociacoesView.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
 
 export class NegociacaoController {
 
@@ -18,6 +19,7 @@ export class NegociacaoController {
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
+    private negociacoesService = new NegociacoesService();
 
     constructor () {
         // this.inputData = <HTMLInputElement>document.querySelector('#data '); //dois tipos de cast
@@ -48,17 +50,8 @@ export class NegociacaoController {
     };
 
     public importaDados() : void {
-        fetch('http://127.0.0.1:8080/dados')
-            .then(res => res.json())
-            .then((dados : any[]) => {
-                return dados.map(dadoDeHoje => {
-                    return new Negociacao(
-                        new Date(),
-                        dadoDeHoje.vezes, 
-                        dadoDeHoje.montante
-                    );
-                });
-            })
+        this.negociacoesService
+            .obterNegociacoesDoDia() //interface que executa a ação de chamar a api e pegar os dados
             .then(negociacoesDeHoje => {
                 for (let negociacao of negociacoesDeHoje) {
                     this.negociacoes.adiciona(negociacao);
