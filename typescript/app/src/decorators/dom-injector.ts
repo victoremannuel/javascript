@@ -5,6 +5,7 @@ export function domInjector (seletor : string){
         
         let elemento : HTMLElement;
 
+        // cache para que o decorator dom inject faça essa operação apenas uma vez
         const getter = function () {
             if (!elemento) {
                 elemento = <HTMLElement>document.querySelector(seletor);
