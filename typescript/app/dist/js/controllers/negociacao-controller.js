@@ -37,6 +37,7 @@ export class NegociacaoController {
         return data.getDay() > DiasDaSemana.DOMINGO
             && data.getDay() < DiasDaSemana.SABADO;
     }
+    ;
     limparFormulario() {
         this.inputData.value = '';
         this.inputQuantidade.value = '';
@@ -48,6 +49,7 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
         this.mensagemView.update('Negociacao adicionada com sucesso!');
     }
+    ;
 }
 __decorate([
     domInjector('#data')
